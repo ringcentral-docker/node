@@ -55,17 +55,8 @@ RUN addgroup -g 1000 node \
 RUN apk add --no-cache yarn
 
 #==============
-# NPM install
-#==============
-RUN npm config set electron_mirror https://npm.taobao.org/mirrors/electron/  \
-  && npm config set sass_binary_site https://npm.taobao.org/mirrors/node-sass/  \
-  && npm config set phantomjs_cdnurl https://npm.taobao.org/mirrors/phantomjs/  \
-  && npm config set registry https://registry.npm.taobao.org  \
-  && npm cache clean --force
-
-#==============
 # Show version
 #==============
-RUN node --version \
-    && npm version \
-    && yarn --version
+RUN node --version
+RUN npm version
+RUN yarn --version
