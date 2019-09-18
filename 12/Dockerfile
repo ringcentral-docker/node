@@ -3,6 +3,10 @@ LABEL maintainer="john.lin@ringcentral.com"
 
 ENV NODE_VERSION 12.10.0
 
+
+#===============
+# Build nodejs
+#===============
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
     && apk add --no-cache \
@@ -52,11 +56,15 @@ RUN addgroup -g 1000 node \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
 
+
+#===============
+# install yarn
+#===============
 RUN apk add --no-cache yarn
 
-#==============
+#===============
 # Show version
-#==============
+#===============
 RUN node --version
 RUN npm version
 RUN yarn --version
