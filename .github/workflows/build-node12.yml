@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build Node 12 base on JDK 8
 
 on:
   push:
