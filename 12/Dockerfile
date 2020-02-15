@@ -1,7 +1,7 @@
 FROM ringcentral/maven:3.6.2-jdk13-alpine3.10
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 12.13.1
+ENV NODE_VERSION 12.15.0
 
 
 #===============
