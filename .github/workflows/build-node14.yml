@@ -1,4 +1,4 @@
-name: Build Node 13 base on JDK 13
+name: Build Node 14 base on JDK 8
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
     paths:
       # '*' matches any character except '/'
-      - '13/*'
+      - '14/*'
       - '.github/workflows/*'
 jobs:
   build:
@@ -22,10 +22,10 @@ jobs:
 
     - name: Build & Push Docker Image
       run: |
-        cd 13
+        cd 14
         IMAGE_NAME=ringcentral/node
         NODE_VERSION="$(awk '/ENV NODE_VERSION/ {print $3}' Dockerfile)"
-        NODE_MAJOR_VERSION="$(awk  -F '[ .]' '/ENV NODE_VERSION/ {print $3}' Dockerfile)"
+        NODE_MAJOR_VERSION="$(awk -F '[ .]' '/ENV NODE_VERSION/ {print $3}' Dockerfile)"
         BASE_VERSION="$(awk -F '[:-]' '/FROM/ {print $3}' Dockerfile)"
         docker build --tag ${IMAGE_NAME} --file Dockerfile .
         docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:latest"
@@ -35,4 +35,3 @@ jobs:
         docker push "${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
         docker push "${IMAGE_NAME}:${NODE_VERSION}"
         docker push "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-        docker push "${IMAGE_NAME}:latest"

@@ -1,8 +1,7 @@
-FROM ringcentral/maven:3.6.2-jdk13-alpine3.10
+FROM ringcentral/maven:3.6.3-jdk8u202
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 12.18.0
-
+ENV NODE_VERSION 12.18.2
 
 #===============
 # Build nodejs
