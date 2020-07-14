@@ -1,4 +1,4 @@
-name: Build Node 14 base on JDK 8
+name: Build Node 12 base on JDK 11
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - master
     paths:
       # '*' matches any character except '/'
-      - '14/*'
+      - '12-jdk11/*'
       - '.github/workflows/*'
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
 
     - name: Build & Push Docker Image
       run: |
-        cd 14
+        cd 12-jdk11
         IMAGE_NAME=ringcentral/node
         GH_DOCKER_PKG_IMAGE_NAME=docker.pkg.github.com/ringcentral-docker/node/node
 
@@ -35,18 +35,14 @@ jobs:
 
         docker build --tag ${IMAGE_NAME} --file Dockerfile .
 
-        docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-        docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_VERSION}"
+        docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
         docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
-        
+
         docker push "${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
-        docker push "${IMAGE_NAME}:${NODE_VERSION}"
-        docker push "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-        
-        docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-        docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
+        docker push "${IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
+
+        docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
         docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
         
         docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
-        docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
-        docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
+        docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
