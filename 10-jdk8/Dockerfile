@@ -1,7 +1,7 @@
-FROM ringcentral/maven:3.6.3-jdk8u202
+FROM ringcentral/maven:3.8.2-jdk8u202
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 10.21.0
+ENV NODE_VERSION 10.24.1
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
