@@ -1,7 +1,8 @@
-FROM ringcentral/maven:3.8.2-jdk11.0.12
+FROM ringcentral/maven:3.8.2-jdk17
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 12.22.6
+ENV NODE_VERSION 14.17.6
+
 
 #===============
 # Build nodejs
@@ -22,7 +23,7 @@ RUN addgroup -g 1000 node \
         libgcc \
         linux-headers \
         make \
-        python2 \
+        python3 \
   # gpg keys listed at https://github.com/nodejs/node#release-keys
   && for key in \
     94AE36675C464D64BAFA68DD7434390BDBE9B9C5 \
