@@ -1,4 +1,4 @@
-name: Build Node 16 base on JDK 11
+name: Build Node 18 base on JDK 11
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - master
     paths:
       # '*' matches any character except '/'
-      - '16-jdk11/*'
-      - '.github/workflows/build-node16-jdk11.yml'
+      - '18-jdk11/*'
+      - '.github/workflows/build-node18-jdk11.yml'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
 
     - name: Build & Push Docker Image
       run: |
-        cd 16-jdk11
+        cd 18-jdk11
         IMAGE_NAME=ringcentral/node
         GH_DOCKER_PKG_IMAGE_NAME=docker.pkg.github.com/ringcentral-docker/node/node
 
