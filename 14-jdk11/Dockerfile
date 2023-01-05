@@ -1,15 +1,13 @@
 FROM ringcentral/maven:3.6.3-jdk11.0.15
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 14.21.1
+ENV NODE_VERSION 14.21.2
 
 
 #===============
 # Build nodejs
 #===============
-RUN addgroup -g 1000 node \
-    && adduser -u 1000 -G node -s /bin/sh -D node \
-    && apk add --no-cache \
+RUN apk add --no-cache \
         libstdc++ \ 
         git \
         bzip2 \
