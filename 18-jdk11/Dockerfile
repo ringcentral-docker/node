@@ -1,13 +1,13 @@
-FROM ringcentral/maven:3.6.3-jdk11.0.15
+FROM ringcentral/maven:3.6.3-jdk11.0.18
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 18.12.1
+ENV NODE_VERSION 18.15.0
 
 #===============
 # Build nodejs
 #===============
 RUN apk add --no-cache \
-        libstdc++ \ 
+        libstdc++ \
         git \
         bzip2 \
         unzip \
