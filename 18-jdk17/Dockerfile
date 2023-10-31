@@ -1,7 +1,7 @@
-FROM ringcentral/maven:3.6.3-jdk17.0.6
+FROM ringcentral/maven:3.8.8-jdk17.0.9
 LABEL maintainer="john.lin@ringcentral.com"
 
-ENV NODE_VERSION 18.15.0
+ENV NODE_VERSION 18.18.2
 
 #===============
 # Build nodejs
