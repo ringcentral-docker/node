@@ -1,4 +1,4 @@
-FROM ringcentral/maven:3.8.8-jdk17.0.9
+FROM ringcentral/maven:3.8.8-jdk17.0.10
 LABEL maintainer="john.lin@ringcentral.com"
 
 ENV NODE_VERSION 16.20.2
