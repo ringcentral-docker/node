@@ -32,8 +32,8 @@ jobs:
     - name: Set Environment Variables
       id: vars
       run: |
-        NODE_VERSION=${{ matrix.node_version }}
-        NODE_MAJOR_VERSION="$(awk -F '[=]' '/NODE_VERSION/ {print $2}' node${{ matrix.node_version }}.env)"
+        NODE_MAJOR_VERSION=${{ matrix.node_version }}
+        NODE_VERSION="$(awk -F '[=]' '/NODE_VERSION/ {print $2}' node${{ matrix.node_version }}.env)"
         JDK_DIR=jdk${{ matrix.jdk_version }}
         if [[ -f ${JDK_DIR}/Dockerfile ]]; then
           BASE_VERSION="$(awk -F '[:-]' '/ringcentral\/maven/ {print $3}' ${JDK_DIR}/Dockerfile)"
@@ -53,8 +53,9 @@ jobs:
     - name: Build Docker Image
       run: |
         IMAGE_NAME=ringcentral/node
-        ENV_FILE=node${{ matrix.node_version }}.env
-        docker build $(grep -v '^#' ${ENV_FILE} | grep -v '^$' | sed 's/^/--build-arg /') --tag ${IMAGE_NAME} --file ${JDK_DIR}/Dockerfile .
+        sed -i "s/\$NODE_VERSION/$NODE_VERSION/g" ${JDK_DIR}/Dockerfile
+        cat ${JDK_DIR}/Dockerfile
+        docker build --tag ${IMAGE_NAME} --file ${JDK_DIR}/Dockerfile .
 
     - name: Tag and Push Docker Images
       run: |
