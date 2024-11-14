@@ -96,13 +96,13 @@ jobs:
         GH_DOCKER_PKG_IMAGE_NAME=ghcr.io/ringcentral-docker/node/node
 
         NEW_ENTRY="| JDK${{ matrix.jdk_version }} | ${{ matrix.node_version }} | \`${IMAGE_NAME}:${NODE_MAJOR_VERSION}\` \`${IMAGE_NAME}:${NODE_VERSION}\` \`${IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}\` \`${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}\`| \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}\` |"
-        echo "${NEW_ENTRY}" > readme_updates.txt
+        echo "${NEW_ENTRY}" > readme-updates-${{ matrix.node_version }}-${{ matrix.jdk_version }}.txt
 
     - name: Upload README Update
       uses: actions/upload-artifact@v4
       with:
         name: readme-updates-${{ matrix.node_version }}-${{ matrix.jdk_version }}
-        path: readme_updates.txt
+        path: readme-updates-${{ matrix.node_version }}-${{ matrix.jdk_version }}.txt
 
   update-readme:
     needs: build
