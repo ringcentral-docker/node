@@ -33,7 +33,7 @@ jobs:
       id: vars
       run: |
         NODE_MAJOR_VERSION=${{ matrix.node_version }}
-        NODE_VERSION="$(awk -F '[=]' '/NODE_VERSION/ {print $2}' node${{ matrix.node_version }}.env)"
+        NODE_VERSION="$(awk -F '[=]' '/NODE_${{ matrix.node_version }}_VERSION/ {print $2}' node_version.env)"
         JDK_DIR=jdk${{ matrix.jdk_version }}
         if [[ -f ${JDK_DIR}/Dockerfile ]]; then
           BASE_VERSION="$(awk -F '[:-]' '/maven/ {print $4}' ${JDK_DIR}/Dockerfile)"
