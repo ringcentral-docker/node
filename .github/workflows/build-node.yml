@@ -101,7 +101,7 @@ jobs:
     - name: Upload README Update
       uses: actions/upload-artifact@v4
       with:
-        name: readme_updates_${{ matrix.node_version }}-${{ matrix.jdk_version }}
+        name: readme-updates-${{ matrix.node_version }}-${{ matrix.jdk_version }}
         path: readme_updates.txt
 
   update-readme:
@@ -137,7 +137,7 @@ jobs:
         echo "|-------------|--------------|------------|----------------|" >> README.md
     - name: Update README
       run: |
-        for file in ./readme-updates/readme_updates_*.txt; do
+        for file in ./readme-updates/readme-updates-*.txt; do
           while IFS= read -r line; do
             JDK_VERSION=$(echo $line | cut -d' ' -f2)
             if grep -q "JDK${JDK_VERSION}" README.md; then
