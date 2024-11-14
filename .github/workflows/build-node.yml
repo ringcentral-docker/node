@@ -96,13 +96,13 @@ jobs:
         GH_DOCKER_PKG_IMAGE_NAME=ghcr.io/ringcentral-docker/node/node
 
         NEW_ENTRY="| JDK${{ matrix.jdk_version }} | ${{ matrix.node_version }} | \`${IMAGE_NAME}:${NODE_MAJOR_VERSION}\` \`${IMAGE_NAME}:${NODE_VERSION}\` \`${IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}\` \`${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}\`| \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}\` \`${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}\` |"
-        echo "${NEW_ENTRY}" > readme_updates_${{ matrix.jdk_version }}.txt
+        echo "${NEW_ENTRY}" > readme_updates_${{ matrix.node_version }}-${{ matrix.jdk_version }}.txt
 
     - name: Upload README Update
       uses: actions/upload-artifact@v4
       with:
-        name: readme-updates-${{ matrix.jdk_version }}-${{ matrix.node_version }}
-        path: readme_updates_${{ matrix.jdk_version }}-${{ matrix.node_version }}.txt
+        name: readme_updates_${{ matrix.node_version }}-${{ matrix.jdk_version }}
+        path: readme_updates_${{ matrix.node_version }}-${{ matrix.jdk_version }}.txt
 
   update-readme:
     needs: build
@@ -113,22 +113,22 @@ jobs:
     - name: Download README Updates
       uses: actions/download-artifact@v4
       with:
-        name: readme-updates-8
+        name: readme-updates-22-8
         path: ./readme-updates
     - name: Download README Updates
       uses: actions/download-artifact@v4
       with:
-        name: readme-updates-11
+        name: readme-updates-22-1
         path: ./readme-updates
     - name: Download README Updates
       uses: actions/download-artifact@v4
       with:
-        name: readme-updates-17
+        name: readme-updates-22-17
         path: ./readme-updates
     - name: Download README Updates
       uses: actions/download-artifact@v4
       with:
-        name: readme-updates-21
+        name: readme-updates-22-21
         path: ./readme-updates
 
     - name: Initialize README
