@@ -11,7 +11,7 @@ COPY --from=node /usr/local/lib /usr/local/lib
 COPY --from=node /usr/local/include /usr/local/include
 COPY --from=node /usr/local/bin /usr/local/bin
 
-RUN apk add --no-cache npm yarn pnpm
+RUN apk add --no-cache npm yarn
 
 #===============
 # Show version
