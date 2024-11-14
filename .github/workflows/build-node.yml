@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'jdk*/*'
+      - 'node_version.env'
       - '.github/workflows/build-node.yml'
 
 jobs:
