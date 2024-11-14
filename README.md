@@ -1,16 +1,6 @@
-# Node with Maven and JDK
-
-## Image description
-
-* Base on the latest version of ringCentral/maven Docker Image : [link](https://hub.docker.com/r/ringcentral/maven/)
-
-## How to use this image
-
-## Get the Image
-
-```bash
-docker pull ringcentral/node:latest
-```
-
-for more detail information please refer this url:
-<https://github.com/ringcentral-docker/node>
+| JDK Version | Node Version | Docker Hub | GitHub Package |
+|-------------|--------------|------------|----------------|
+| JDK11 | 22 | `ringcentral/node:22` `ringcentral/node:22.11.0` `ringcentral/node:22-3.8.8` `ringcentral/node:22.11.0-3.8.8`| `ghcr.io/ringcentral-docker/node/node:22` `ghcr.io/ringcentral-docker/node/node:22.11.0` `ghcr.io/ringcentral-docker/node/node:22-3.8.8` `ghcr.io/ringcentral-docker/node/node:22.11.0-3.8.8` |
+| JDK17 | 22 | `ringcentral/node:22` `ringcentral/node:22.11.0` `ringcentral/node:22-3.8.8` `ringcentral/node:22.11.0-3.8.8`| `ghcr.io/ringcentral-docker/node/node:22` `ghcr.io/ringcentral-docker/node/node:22.11.0` `ghcr.io/ringcentral-docker/node/node:22-3.8.8` `ghcr.io/ringcentral-docker/node/node:22.11.0-3.8.8` |
+| JDK21 | 22 | `ringcentral/node:22` `ringcentral/node:22.11.0` `ringcentral/node:22-3.8.8` `ringcentral/node:22.11.0-3.8.8`| `ghcr.io/ringcentral-docker/node/node:22` `ghcr.io/ringcentral-docker/node/node:22.11.0` `ghcr.io/ringcentral-docker/node/node:22-3.8.8` `ghcr.io/ringcentral-docker/node/node:22.11.0-3.8.8` |
+| JDK8 | 22 | `ringcentral/node:22` `ringcentral/node:22.11.0` `ringcentral/node:22-3.8.8` `ringcentral/node:22.11.0-3.8.8`| `ghcr.io/ringcentral-docker/node/node:22` `ghcr.io/ringcentral-docker/node/node:22.11.0` `ghcr.io/ringcentral-docker/node/node:22-3.8.8` `ghcr.io/ringcentral-docker/node/node:22.11.0-3.8.8` |
