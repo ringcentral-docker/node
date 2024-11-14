@@ -37,13 +37,13 @@ jobs:
         JDK_DIR=jdk${{ matrix.jdk_version }}
         if [[ -f ${JDK_DIR}/Dockerfile ]]; then
           BASE_VERSION="$(awk -F '[:-]' '/ringcentral\/maven/ {print $3}' ${JDK_DIR}/Dockerfile)"
-          echo "${NODE_VERSION}" > ${JDK_DIR}-${NODE_VERSION}/node_version.txt
-          echo "${NODE_MAJOR_VERSION}" > ${JDK_DIR}-${NODE_VERSION}/node_major_version.txt
-          echo "${BASE_VERSION}" > ${JDK_DIR}-${NODE_VERSION}/base_version.txt
+          echo "${NODE_VERSION}" > ${JDK_DIR}/${NODE_VERSION}-node_version.txt
+          echo "${NODE_MAJOR_VERSION}" > ${JDK_DIR}/${NODE_VERSION}-node_major_version.txt
+          echo "${BASE_VERSION}" > ${JDK_DIR}/${NODE_VERSION}-base_version.txt
         else
-          NODE_VERSION=$(cat ${JDK_DIR}-${NODE_VERSION}/node_version.txt)
-          NODE_MAJOR_VERSION=$(cat ${JDK_DIR}-${NODE_VERSION}/node_major_version.txt)
-          BASE_VERSION=$(cat ${JDK_DIR}-${NODE_VERSION}/base_version.txt)
+          NODE_VERSION=$(cat ${JDK_DIR}/${NODE_VERSION}-node_version.txt)
+          NODE_MAJOR_VERSION=$(cat ${JDK_DIR}/${NODE_VERSION}-node_major_version.txt)
+          BASE_VERSION=$(cat ${JDK_DIR}/${NODE_VERSION}-base_version.txt)
         fi
         echo "JDK_DIR=${JDK_DIR}" >> $GITHUB_ENV
         echo "NODE_VERSION=${NODE_VERSION}" >> $GITHUB_ENV
