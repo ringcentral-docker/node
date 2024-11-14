@@ -54,7 +54,7 @@ jobs:
       run: |
         IMAGE_NAME=ringcentral/node
         ENV_FILE=node${{ matrix.node_version }}.env
-        docker build --tag ${IMAGE_NAME} --file ${JDK_DIR}/Dockerfile --env-file ${ENV_FILE} .
+        docker build $(grep -v '^#' ${ENV_FILE} | grep -v '^$' | sed 's/^/--build-arg /') --tag ${IMAGE_NAME} --file ${JDK_DIR}/Dockerfile .
 
     - name: Tag and Push Docker Images
       run: |
