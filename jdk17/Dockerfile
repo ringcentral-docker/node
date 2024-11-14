@@ -1,6 +1,6 @@
-FROM node:$NODE_VERSION-alpine AS node
+FROM public.ecr.aws/docker/library/node:$NODE_VERSION-alpine AS node
 
-FROM registry.danbao.dev/ringcentral/maven:3.9.9-jdk17.0.13
+FROM ghcr.io/ringcentral-docker/maven/maven:3.9.9-jdk17.0.13
 LABEL maintainer="john.lin@ringcentral.com"
 
 ENV NODE_VERSION $NODE_VERSION
