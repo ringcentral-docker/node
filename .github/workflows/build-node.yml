@@ -61,17 +61,6 @@ jobs:
       run: |
         IMAGE_NAME=ringcentral/node
         GH_DOCKER_PKG_IMAGE_NAME=ghcr.io/ringcentral-docker/node/node
-        if [ "${{ matrix.jdk_version }}" -eq 21 ]; then
-          docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_VERSION}"
-          docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-          docker push "${IMAGE_NAME}:${NODE_VERSION}"
-          docker push "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-
-          docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
-          docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-          docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
-          docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
-        fi
         
         docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_VERSION}-${BASE_VERSION}"
         docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
@@ -84,11 +73,23 @@ jobs:
         docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}-${BASE_VERSION}"
 
         if [ "${{ matrix.jdk_version }}" -eq 21 ]; then
-          docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:latest"
-          docker push "${IMAGE_NAME}:latest"
-          docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:latest"
-          docker push "${GH_DOCKER_PKG_IMAGE_NAME}:latest"
+          docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_VERSION}"
+          docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
+          docker push "${IMAGE_NAME}:${NODE_VERSION}"
+          docker push "${IMAGE_NAME}:${NODE_MAJOR_VERSION}"
+
+          docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
+          docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
+          docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_VERSION}"
+          docker push "${GH_DOCKER_PKG_IMAGE_NAME}:${NODE_MAJOR_VERSION}"
+          if [ "${{ matrix.node_version }}" -eq 22 ]; then
+            docker tag "${IMAGE_NAME}" "${IMAGE_NAME}:latest"
+            docker push "${IMAGE_NAME}:latest"
+            docker tag "${IMAGE_NAME}" "${GH_DOCKER_PKG_IMAGE_NAME}:latest"
+            docker push "${GH_DOCKER_PKG_IMAGE_NAME}:latest"
+          fi
         fi
+
     - name: Generate README Update
       run: |
         BASE_IMAGE="alpine"
