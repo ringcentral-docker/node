@@ -15,19 +15,28 @@ LABEL maintainer="john.lin@ringcentral.com"
 ARG NODE_VERSION
 ENV NODE_VERSION=${NODE_VERSION}
 
-# Copy Node.js from official Node image
-COPY --from=node /usr/lib /usr/lib
-COPY --from=node /usr/local/share /usr/local/share
-COPY --from=node /usr/local/lib /usr/local/lib
-COPY --from=node /usr/local/include /usr/local/include
-COPY --from=node /usr/local/bin /usr/local/bin
+# Copy only Node.js related files from official Node image
+COPY --from=node /usr/local/bin/node /usr/local/bin/node
+COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules
+COPY --from=node /usr/local/include/node /usr/local/include/node
 
-# Update library cache and ensure PATH includes /usr/local/bin
+# Create symlinks for npm, npx, corepack and enable package managers
+RUN ln -sf /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
+    && ln -sf /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx \
+    && ln -sf /usr/local/lib/node_modules/corepack/dist/corepack.js /usr/local/bin/corepack \
+    && corepack enable \
+    && corepack enable pnpm
+
+# Install bun
+RUN npm install -g bun
+
+# Ensure PATH includes /usr/local/bin
 ENV PATH="/usr/local/bin:${PATH}"
-RUN ldconfig
 
 # Show versions
 RUN java -version \
     && node --version \
     && npm version \
-    && yarn --version
+    && yarn --version \
+    && pnpm --version \
+    && bun --version
