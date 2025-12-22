@@ -42,6 +42,9 @@ jobs:
   build:
     needs: prepare
     runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      packages: write
     strategy:
       matrix: ${{ fromJson(needs.prepare.outputs.matrix) }}
       fail-fast: false
@@ -93,6 +96,7 @@ jobs:
           echo "tags=${TAGS%,}" >> $GITHUB_OUTPUT
 
       - name: Build and push
+        id: build
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -105,6 +109,21 @@ jobs:
             MAVEN_TAG=${{ matrix.maven_tag }}
           cache-from: type=gha,scope=${{ matrix.name }}
           cache-to: type=gha,mode=max,scope=${{ matrix.name }}
+
+      - name: Run Trivy vulnerability scanner
+        if: steps.build.outcome == 'success'
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: ${{ env.DOCKER_HUB_IMAGE }}:${{ matrix.node_version }}-jdk${{ matrix.jdk_version }}
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          sevegithub/codeql-action/upload-sarif@v4
+
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v3
+        if: steps.build.outcome == 'success'
+        with:
+          sarif_file: 'trivy-results.sarif'
 
   update-readme:
     needs: build
