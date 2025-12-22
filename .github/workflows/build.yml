@@ -117,10 +117,10 @@ jobs:
           image-ref: ${{ env.DOCKER_HUB_IMAGE }}:${{ matrix.node_version }}-jdk${{ matrix.jdk_version }}
           format: 'sarif'
           output: 'trivy-results.sarif'
-          sevegithub/codeql-action/upload-sarif@v4
+          severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         if: steps.build.outcome == 'success'
         with:
           sarif_file: 'trivy-results.sarif'
