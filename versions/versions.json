@@ -1,16 +1,8 @@
 {
   "versions": [
     {
-      "name": "node18-jdk8",
-      "node_version": "18.20.5",
-      "node_major": "18",
-      "jdk_version": "8",
-      "maven_tag": "3.8.8-jdk8u472-noble",
-      "is_latest": false
-    },
-    {
       "name": "node20-jdk8",
-      "node_version": "20.18.0",
+      "node_version": "20.19.6",
       "node_major": "20",
       "jdk_version": "8",
       "maven_tag": "3.8.8-jdk8u472-noble",
@@ -18,23 +10,23 @@
     },
     {
       "name": "node22-jdk8",
-      "node_version": "22.11.0",
+      "node_version": "22.21.1",
       "node_major": "22",
       "jdk_version": "8",
       "maven_tag": "3.8.8-jdk8u472-noble",
       "is_latest": false
     },
     {
-      "name": "node18-jdk11",
-      "node_version": "18.20.5",
-      "node_major": "18",
-      "jdk_version": "11",
-      "maven_tag": "3.9.12-jdk11.0.29-noble",
+      "name": "node24-jdk8",
+      "node_version": "24.12.0",
+      "node_major": "24",
+      "jdk_version": "8",
+      "maven_tag": "3.8.8-jdk8u472-noble",
       "is_latest": false
     },
     {
       "name": "node20-jdk11",
-      "node_version": "20.18.0",
+      "node_version": "20.19.6",
       "node_major": "20",
       "jdk_version": "11",
       "maven_tag": "3.9.12-jdk11.0.29-noble",
@@ -42,23 +34,23 @@
     },
     {
       "name": "node22-jdk11",
-      "node_version": "22.11.0",
+      "node_version": "22.21.1",
       "node_major": "22",
       "jdk_version": "11",
       "maven_tag": "3.9.12-jdk11.0.29-noble",
       "is_latest": false
     },
     {
-      "name": "node18-jdk17",
-      "node_version": "18.20.5",
-      "node_major": "18",
-      "jdk_version": "17",
-      "maven_tag": "3.9.12-jdk17.0.17-noble",
+      "name": "node24-jdk11",
+      "node_version": "24.12.0",
+      "node_major": "24",
+      "jdk_version": "11",
+      "maven_tag": "3.9.12-jdk11.0.29-noble",
       "is_latest": false
     },
     {
       "name": "node20-jdk17",
-      "node_version": "20.18.0",
+      "node_version": "20.19.6",
       "node_major": "20",
       "jdk_version": "17",
       "maven_tag": "3.9.12-jdk17.0.17-noble",
@@ -66,23 +58,23 @@
     },
     {
       "name": "node22-jdk17",
-      "node_version": "22.11.0",
+      "node_version": "22.21.1",
       "node_major": "22",
       "jdk_version": "17",
       "maven_tag": "3.9.12-jdk17.0.17-noble",
       "is_latest": false
     },
     {
-      "name": "node18-jdk21",
-      "node_version": "18.20.5",
-      "node_major": "18",
-      "jdk_version": "21",
-      "maven_tag": "3.9.12-jdk21.0.9-noble",
+      "name": "node24-jdk17",
+      "node_version": "24.12.0",
+      "node_major": "24",
+      "jdk_version": "17",
+      "maven_tag": "3.9.12-jdk17.0.17-noble",
       "is_latest": false
     },
     {
       "name": "node20-jdk21",
-      "node_version": "20.18.0",
+      "node_version": "20.19.6",
       "node_major": "20",
       "jdk_version": "21",
       "maven_tag": "3.9.12-jdk21.0.9-noble",
@@ -90,23 +82,23 @@
     },
     {
       "name": "node22-jdk21",
-      "node_version": "22.11.0",
+      "node_version": "22.21.1",
       "node_major": "22",
       "jdk_version": "21",
       "maven_tag": "3.9.12-jdk21.0.9-noble",
       "is_latest": true
     },
     {
-      "name": "node18-jdk25",
-      "node_version": "18.20.5",
-      "node_major": "18",
-      "jdk_version": "25",
-      "maven_tag": "3.9.12-jdk25.0.1-noble",
+      "name": "node24-jdk21",
+      "node_version": "24.12.0",
+      "node_major": "24",
+      "jdk_version": "21",
+      "maven_tag": "3.9.12-jdk21.0.9-noble",
       "is_latest": false
     },
     {
       "name": "node20-jdk25",
-      "node_version": "20.18.0",
+      "node_version": "20.19.6",
       "node_major": "20",
       "jdk_version": "25",
       "maven_tag": "3.9.12-jdk25.0.1-noble",
@@ -114,8 +106,16 @@
     },
     {
       "name": "node22-jdk25",
-      "node_version": "22.11.0",
+      "node_version": "22.21.1",
       "node_major": "22",
+      "jdk_version": "25",
+      "maven_tag": "3.9.12-jdk25.0.1-noble",
+      "is_latest": false
+    },
+    {
+      "name": "node24-jdk25",
+      "node_version": "24.12.0",
+      "node_major": "24",
       "jdk_version": "25",
       "maven_tag": "3.9.12-jdk25.0.1-noble",
       "is_latest": false
