@@ -1,10 +1,10 @@
 # Parameterized Node + Maven + JDK Dockerfile
 #
 # Build example:
-#   docker build --build-arg NODE_VERSION=22.11.0 --build-arg MAVEN_TAG=3.9.12-jdk21.0.9-noble .
+#   docker build --build-arg NODE_VERSION=22.22.2 --build-arg MAVEN_TAG=3.9.15-jdk21.0.10-noble .
 
-ARG NODE_VERSION=22.11.0
-ARG MAVEN_TAG=3.9.12-jdk21.0.9-noble
+ARG NODE_VERSION=22.22.2
+ARG MAVEN_TAG=3.9.15-jdk21.0.10-noble
 
 FROM public.ecr.aws/docker/library/node:${NODE_VERSION}-slim AS node
 
