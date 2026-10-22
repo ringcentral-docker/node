@@ -39,7 +39,7 @@ docker run -it ringcentral/node:22-jdk21 node --version
 ```bash
 docker build \
   --build-arg NODE_VERSION=22.23.4 \
-  --build-arg MAVEN_TAG=3.9.15-jdk21.0.10-noble \
+  --build-arg MAVEN_TAG=3.9.15-jdk21.0.12.1-noble \
   -t my-node:22-jdk21 .
 ```
 
