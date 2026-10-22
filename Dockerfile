@@ -24,8 +24,12 @@ COPY --from=node /usr/local/include/node /usr/local/include/node
 RUN ln -sf /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
     && ln -sf /usr/local/lib/node_modules/npm/bin/npx-cli.js /usr/local/bin/npx
 
-# Install package managers via npm (avoid corepack signature issues)
-RUN npm install -g yarn pnpm bun
+# Node.js 26+ requires libatomic at runtime, which is not copied from the Node stage.
+# Install package managers via npm (avoid corepack signature issues).
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libatomic1 \
+    && rm -rf /var/lib/apt/lists/* \
+    && npm install -g yarn pnpm bun
 
 # Ensure PATH includes /usr/local/bin
 ENV PATH="/usr/local/bin:${PATH}"
